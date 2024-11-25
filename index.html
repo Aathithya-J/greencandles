@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma Traders - Premium Trading Packages</title>
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #0a1929;
+            --accent-color: #2196f3;
+            --dark-accent: #1976d2;
+            --card-bg: #132f4c;
+            --gradient-1: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            --gradient-2: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+            --font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        .header {
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            opacity: 0.9;
+        }
+
+        .nav a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 8%;
+            background: linear-gradient(180deg, var(--secondary-color) 0%, #051421 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%232196f3" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(33, 150, 243, 0.4);
+        }
+
+        .features {
+            padding: 8rem 8%;
+            background: linear-gradient(180deg, #051421 0%, var(--secondary-color) 100%);
+            position: relative;
+        }
+
+        .features-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-section {
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            position: relative;
+        }
+
+        .feature-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-image {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .feature-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-link:hover {
+            color: var(--dark-accent);
+            gap: 0.8rem;
+        }
+
+        .projects {
+            padding: 8rem 8%;
+            background: var(--secondary-color);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .contact {
+            padding: 8rem 8%;
+            background: var(--secondary-color);
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--primary-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact .cta-button {
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--secondary-color);
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 5%;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--secondary-color);
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav a {
+                padding: 1rem 5%;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .hero {
+                padding: 6rem 5% 4rem;
+            }
+
+            .features {
+                padding: 4rem 5%;
+            }
+
+            .feature-section {
+                flex-direction: column !important;
+                gap: 4rem;
+            }
+
+            .feature-image {
+                min-height: 300px;
+            }
+
+            .contact {
+                padding: 4rem 5%;
+            }
+
+            .contact .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .projects {
+                padding: 4rem 5%;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Cryptian</div>
+        <button class="menu-btn">☰</button>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#packages">Packages</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Master the Markets with Cryptian</h1>
+        <p>Premium trading packages designed to help you achieve financial freedom through expert market analysis and proven strategies</p>
+        <a href="#packages" class="cta-button">View Packages</a>
+    </section>
+    <section class="features" id="services">
+        <div class="features-container">
+            <div class="feature-section">
+                <div class="feature-content">
+                    <h3>Forex Trading Package</h3>
+                    <p>Access our comprehensive forex trading strategies and analysis. Learn to trade major currency pairs with confidence using our proven methods and real-time market insights.</p>
+                    <a href="#learn-more" class="feature-link">View Package →</a>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="Forex Trading">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="packages">
+        <h2 class="section-title">Trading Packages</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="Beginner Package">
+                </div>
+                <div class="project-content">
+                    <h3>Beginner Package</h3>
+                    <p>Perfect for those starting their trading journey</p>
+                    <a href="https://wa.link/oj2c0b" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?ixlib=rb-4.0.3" alt="Advanced Package">
+                </div>
+                <div class="project-content">
+                    <h3>Advanced Package</h3>
+                    <p>For experienced traders seeking premium signals</p>
+                    <a href="https://wa.link/8nunmv" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="VIP Package">
+                </div>
+                <div class="project-content">
+                    <h3>VIP Package</h3>
+                    <p>Elite trading signals and personal mentorship</p>
+                    <a href="https://wa.link/besnpa" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        Made with ❤️ by Aathithya
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.querySelector('.menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
