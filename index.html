@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sigma Traders - Premium Trading Packages</title>
+    <title>Cryptain - Premium Trading Packages</title>
     <style>
         :root {
             --primary-color: #ffffff;
@@ -287,51 +288,129 @@
             font-size: 1rem;
         }
 
-        .contact {
-            padding: 8rem 8%;
-            background: var(--secondary-color);
+        /* Testimonials Styles */
+        h2.title {
+            text-align: center;
+            font-size: 30px;
+            margin: 32px 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            position: relative;
+            color: var(--primary-color);
         }
 
-        .contact-form {
-            max-width: 800px;
-            margin: 4rem auto 0;
+        h2.title::after {
+            position: absolute;
+            content: "";
+            width: 80px;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 32px;
+            max-width: 1200px;
+            margin-inline: auto;
+            height: 500px;
+            width: 100%;
+            padding: 24px;
+        }
+
+        .column {
+            height: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom,
+                    transparent 0%,
+                    black 15%,
+                    black 85%,
+                    transparent 100%);
+        }
+
+        .testimonials {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 24px;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
         }
 
-        .form-group {
-            position: relative;
+        .column:hover .testimonials {
+            animation-play-state: paused;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1.2rem;
+        .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .profile img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card .profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card .profile .name {
+            font-weight: 600;
             color: var(--primary-color);
-            font-size: 1rem;
-            transition: all 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
+        .card .profile .role {
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
         }
 
-        .contact .cta-button {
-            align-self: flex-start;
-            border: none;
-            cursor: pointer;
+        .card .content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .column:nth-child(1) .testimonials {
+            animation-name: scrollUp;
+            animation-duration: 23s;
+        }
+
+        .column:nth-child(2) .testimonials {
+            animation-name: scrollDown;
+            animation-duration: 50s;
+        }
+
+        .column:nth-child(3) .testimonials {
+            animation-name: scrollUp;
+            animation-duration: 30s;
+        }
+
+        @keyframes scrollUp {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-50%);
+            }
+        }
+
+        @keyframes scrollDown {
+            from {
+                transform: translateY(-50%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
         }
 
         .footer {
@@ -342,7 +421,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .header {
                 padding: 1rem 5%;
             }
@@ -391,15 +470,6 @@
                 min-height: 300px;
             }
 
-            .contact {
-                padding: 4rem 5%;
-            }
-
-            .contact .cta-button {
-                width: 100%;
-                justify-content: center;
-            }
-
             .projects {
                 padding: 4rem 5%;
             }
@@ -407,36 +477,64 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .testimonials-container {
+                gap: 16px;
+                padding: 16px;
+            }
+
+            .column:nth-child(3) {
+                display: none;
+            }
+
+            .column:hover .testimonials {
+                animation-play-state: running;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .column {
+                display: none;
+            }
+
+            .column:first-child {
+                display: block;
+            }
         }
     </style>
 </head>
+
 <body>
     <header class="header">
-        <div class="logo">Cryptian</div>
+        <div class="logo">Cryptain</div>
         <button class="menu-btn">☰</button>
         <nav class="nav">
-            <a href="#about">About</a>
-            <a href="#packages">Packages</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">Blog</a>
+            <a href="drop.html">Drop</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Master the Markets with Cryptian</h1>
-        <p>Premium trading packages designed to help you achieve financial freedom through expert market analysis and proven strategies</p>
+        <h1>Master the Markets with Cryptain</h1>
+        <p>Premium trading packages designed to help you achieve financial freedom through expert market analysis and
+            proven strategies</p>
         <a href="#packages" class="cta-button">View Packages</a>
     </section>
+
     <section class="features" id="services">
         <div class="features-container">
             <div class="feature-section">
                 <div class="feature-content">
-                    <h3>Forex Trading Package</h3>
-                    <p>Access our comprehensive forex trading strategies and analysis. Learn to trade major currency pairs with confidence using our proven methods and real-time market insights.</p>
+                    <h3>Trading Courses</h3>
+                    <p>We are a team of 2 looking to expand and share our love for trading.
+                        As a bonus, when a course is purchased, you will own a referral code, which you can then refer
+                        your friends to get a 10% discount on their future courses. More perks for purchasing courses
+                        are displayed on the purchasing page.</p>
                     <a href="#learn-more" class="feature-link">View Package →</a>
                 </div>
                 <div class="feature-image">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="Forex Trading">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3"
+                        alt="Forex Trading">
                 </div>
             </div>
         </div>
@@ -446,37 +544,83 @@
         <h2 class="section-title">Trading Packages</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="Beginner Package">
-                </div>
                 <div class="project-content">
-                    <h3>Beginner Package</h3>
+                    <h3>Basic Package</h3>
                     <p>Perfect for those starting their trading journey</p>
-                    <a href="https://wa.link/oj2c0b" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    <ul style="list-style: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.5rem;">✓ Beginner Friendly</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 3 Lessons</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Personalised 1 to 1 teaching</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Learn the essentials</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Crypto Safety</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Understand the charts</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Master the software</li>
+                        <li style="margin-bottom: 0.5rem;">✓ High Flexibility</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Discounted Upgrades</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Save 10% on the PREMIER course!</li>
+                    </ul>
+                    <div style="margin-top: auto;">
+                        <a href="https://wa.link/oj2c0b" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?ixlib=rb-4.0.3" alt="Advanced Package">
-                </div>
                 <div class="project-content">
-                    <h3>Advanced Package</h3>
+                    <h3>Premier Package</h3>
                     <p>For experienced traders seeking premium signals</p>
-                    <a href="https://wa.link/8nunmv" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    <ul style="list-style: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.5rem;">✓ Built for those from BASIC</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Enhance your experience</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Personalised Feedback</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 3-4 Personalised sessions</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Winning Strategies</li>
+                        <li style="margin-bottom: 0.5rem;">✓ In-Depth Chart Reading</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Discounted Upgrades</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Save 10% on the EXCLUSIVE course!</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Discounted Add-Ons</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Save 10% on any ADD-ON when purchased together as a bundle</li>
+                    </ul>
+                    <div style="margin-top: auto;">
+                        <a href="https://wa.link/8nunmv" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3" alt="VIP Package">
-                </div>
                 <div class="project-content">
-                    <h3>VIP Package</h3>
+                    <h3>Exclusive Package</h3>
                     <p>Elite trading signals and personal mentorship</p>
-                    <a href="https://wa.link/besnpa" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    <ul style="list-style: none; margin: 1rem 0;">
+                        <li style="margin-bottom: 0.5rem;">✓ Built for those from BASIC</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Enhance your experience</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Personalised Feedback</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 3-4 Personalised sessions</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Winning Strategies</li>
+                        <li style="margin-bottom: 0.5rem;">✓ In-Depth Chart Reading</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Discounted Upgrades</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Save 10% on the EXCLUSIVE course!</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Discounted Add-Ons</li>
+                        <li style="margin-bottom: 0.5rem;">✓ Save 10% on any ADD-ON when purchased together as a bundle</li>
+                    </ul>
+                    <div style="margin-top: auto;">
+                        <a href="https://wa.link/besnpa" class="cta-button" style="margin-top: 1rem;">Get Started</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <h2 class="title">What our customers say</h2>
+    <div class="testimonials-container">
+        <div class="column">
+            <div class="testimonials" id="column1"></div>
+        </div>
+        <div class="column">
+            <div class="testimonials" id="column2"></div>
+        </div>
+        <div class="column">
+            <div class="testimonials" id="column3"></div>
+        </div>
+    </div>
 
     <footer class="footer">
         Made with ❤️ by Aathithya
@@ -486,11 +630,83 @@
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.querySelector('.menu-btn');
             const nav = document.querySelector('.nav');
-            
+
             menuBtn.addEventListener('click', () => {
                 nav.classList.toggle('active');
             });
+
+            // Testimonials
+            const testimonials = [
+                {
+                    name: "Sarah Johnson",
+                    role: "Marketing Director",
+                    content: "Absolutely incredible service! The team went above and beyond our expectations. Would highly recommend to anyone looking for top-notch quality.",
+                    image: "https://randomuser.me/api/portraits/women/1.jpg",
+                },
+                {
+                    name: "Michael Chen",
+                    role: "Software Engineer",
+                    content: "The attention to detail and technical expertise demonstrated throughout the project was impressive. A pleasure to work with!",
+                    image: "https://randomuser.me/api/portraits/men/1.jpg",
+                },
+                {
+                    name: "Emma Wilson",
+                    role: "Product Manager",
+                    content: "Game-changing results for our business. The innovative solutions provided helped us reach our goals faster than expected.",
+                    image: "https://randomuser.me/api/portraits/women/2.jpg",
+                },
+                {
+                    name: "James Rodriguez",
+                    role: "Creative Director",
+                    content: "Outstanding creativity and professionalism. They truly understand how to deliver exceptional results while maintaining clear communication.",
+                    image: "https://randomuser.me/api/portraits/men/2.jpg",
+                },
+                {
+                    name: "Lisa Thompson",
+                    role: "CEO",
+                    content: "A transformative partnership that has significantly impacted our business growth. Their strategic approach is unmatched.",
+                    image: "https://randomuser.me/api/portraits/women/3.jpg",
+                },
+                {
+                    name: "David Park",
+                    role: "UX Designer",
+                    content: "Their attention to user experience and design details made all the difference. The final product exceeded our expectations.",
+                    image: "https://randomuser.me/api/portraits/men/3.jpg",
+                },
+            ];
+
+            const createTestimonialCard = (testimonial) => {
+                return `
+                    <div class="card">
+                        <div class="profile">
+                            <img src="${testimonial.image}" alt="${testimonial.name}" />
+                            <div>
+                                <div class="name">${testimonial.name}</div>
+                                <div class="role">${testimonial.role}</div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            ${testimonial.content}
+                        </div>
+                    </div>
+                `;
+            };
+
+            const populateColumn = (columnId) => {
+                const column = document.getElementById(columnId);
+                [...testimonials, ...testimonials].forEach((testimonial) => {
+                    column.innerHTML += createTestimonialCard(testimonial);
+                });
+            };
+
+            testimonials.sort(() => Math.random() - 0.5);
+            populateColumn("column1");
+            testimonials.sort(() => Math.random() - 0.5);
+            populateColumn("column2");
+            testimonials.sort(() => Math.random() - 0.5);
+            populateColumn("column3");
         });
     </script>
 </body>
+
 </html>
