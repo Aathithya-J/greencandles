@@ -154,6 +154,78 @@
             box-shadow: 0 12px 40px rgba(33, 150, 243, 0.4);
         }
 
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 450px;
+            width: 100%;
+            margin: 2.5rem auto;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        form label {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: -0.5rem;
+        }
+
+        form input[type="text"],
+        form input[type="email"] {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        }
+
+        form input[type="submit"] {
+            padding: 1.2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        form input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(33, 150, 243, 0.4);
+            background: var(--gradient-2);
+        }
+
+        form input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
         .features {
             padding: 8rem 8%;
             background: linear-gradient(180deg, #051421 0%, var(--secondary-color) 100%);
@@ -620,6 +692,14 @@
             </div>
         </div>
     </section>
+    <h2 class="section-title">Stay Updated</h2>
+    <form action="https://app.convertkit.com/forms/7447306/subscriptions" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="fields[first_name]" id="name" required placeholder="Name">
+        <label for="email">Email Address</label>
+        <input type="email" name="email_address" id="email" required placeholder="Email Address">
+        <input type="submit" value="Subscribe">
+    </form>
 
     <!-- Commented out for now -->
     <!-- <h2 class="title">What our customers say</h2>
